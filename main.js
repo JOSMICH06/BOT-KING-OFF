@@ -120,7 +120,16 @@ const senderNumber = sender.split("@")[0]
 const isMe = senderNumber == botNumber
 const conts = mek.key.fromMe ? client.user.jid : client.contacts[sender] || { notify: jid.replace(/@.+/, '') }
 const pushname = mek.key.fromMe ? client.user.name : conts.notify || conts.vname || conts.name || '-'
-
+const groupMetadata = isGroup ? await leo.groupMetadata(from) : ''
+  const groupName = isGroup ? groupMetadata.subject : ''
+  const groupMembers = isGroup ? groupMetadata.participants : ''
+  const groupAdmins = isGroup ? await wa.getGroupAdmins(groupMembers) : []
+  const isOwner = senderNumber == owner || senderNumber == botNumber || mods.includes(senderNumber)
+  const isAdmin = groupAdmins.includes(sender) || false
+  const botAdmin = groupAdmins.includes(leo.user.jid)
+  const isBan = cekBannedUser(sender, ban)
+  const isRegister = checkRegisteredUser(sender)
+  const isWelkom = isGroup ? welkom.includes(from) : false
 //AUTO RESPUESTA VERIFICADA
 if(body.includes('bot')) {
 client.sendMessage(from, 'Hola!', MessageType.text, {quoted: { key: {
@@ -128,7 +137,7 @@ fromMe: false,
 participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
 },
 message: {
-"documentMessage": { "title": "𝕿𝖍ٌ𝖊𝕮𝖍𝖔𝖚𝖙𝖊", 'jpegThumbnail': fs.readFileSync('./media/logo.jpg')}}
+"documentMessage": { "title": JOSEPH", 'jpegThumbnail': fs.readFileSync('./media/logo.jpg')}}
 }})
 }
 
