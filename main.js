@@ -7,6 +7,71 @@ const prefix = '.'
 const conn = require("./lib/index")
 conn.connect()
 const client = conn.client
+//
+ client.on('group-participants-update', async (anu) => {
+      const _welcom = JSON.parse(fs.readFileSync('./src/welkom.json'))
+          if (!_welcom.includes(anu.jid)) return
+          try {
+              const mdata = await  client.groupMetadata(anu.jid)
+              console.log(anu)
+              if (anu.action == 'add') {
+                  num = anu.participants[0]
+                  try {
+                      ppimg = await  client.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.us`)
+                  } catch {
+                      ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+                  }
+                  teks = `Hola @${num.split('@')[0]}\nBienvenido/a al Grupo ${mdata.subject}`
+                  
+                  let buff = await getBuffer(ppimg)
+                   client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+}                   
+                else if (anu.action == 'promote') {
+                  num = anu.participants[0]
+                  try {
+                      ppimg = await  client.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.us`)
+                  } catch {
+                      ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+                  }
+                  teks = `≡ NUEVO ADMIN
+  ┌──────────────
+  ├ Nombre : @${num.split('@')[0]}
+  ├ Número : ${num.replace('@s.whatsapp.net', '')}
+  ├ Mensaje : Admin nuevo.
+  └──────────────`
+                  let buff = await getBuffer(ppimg)
+                   client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+                  } else if (anu.action == 'demote') {
+                  num = anu.participants[0]
+                  try {
+                      ppimg = await  client.getProfilePicture(`${anu.participants[0].split('@')[0]}@c.us`)
+                  } catch {
+                      ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+                  }
+                  teks = `≡ ADMIN DEGRADADO
+  ┌──────────────
+  ├
+  ├ Nombre : @${num.split('@')[0]}
+  ├ Número : ${num.replace('@s.whatsapp.net', '')}
+  ├ Mensaje : Un admin menos.
+  └──────────────`
+                  let buff = await getBuffer(ppimg)
+                   client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+              } else if (anu.action == 'remove') {
+                  num = anu.participants[0]
+                  try {
+                      ppimg = await  client.getProfilePicture(`${num.split('@')[0]}@c.us`)
+                  } catch {
+                      ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
+                  }
+                  teks = `Adios @${num.split('@')[0]} no se te extrañara :D`
+                  let buff = await getBuffer(ppimg)
+                   client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
+              }
+          } catch (e) {
+              console.log('Error : %s', color(e, 'red'))
+          }
+      })
 client.on('chat-update', async (mek) => {
 try {	  
 if (!mek.hasNewMessage) return
