@@ -130,16 +130,6 @@ const groupMetadata = isGroup ? await leo.groupMetadata(from) : ''
   const isBan = cekBannedUser(sender, ban)
   const isRegister = checkRegisteredUser(sender)
   const isWelkom = isGroup ? welkom.includes(from) : false
-//AUTO RESPUESTA VERIFICADA
-if(body.includes('bot')) {
-client.sendMessage(from, 'Hola!', MessageType.text, {quoted: { key: {
-fromMe: false,
-participant: `0@s.whatsapp.net`, ...(from ? { remoteJid: "status@broadcast" } : {})
-},
-message: {
-"documentMessage": { "title": JOSEPH", 'jpegThumbnail': fs.readFileSync('./media/logo.jpg')}}
-}})
-}
 
 //AUTO RESPUESTA SIN VERIFICACION
 if(body == ('hola')) {
