@@ -2,7 +2,7 @@
 <img src="./media/9b7e3251-c55d-4284-b6a4-668155d14ae3.jpg" width="140" height="140"/>
 </p>
 <p align="center">
-𝗖𝗥𝗘𝗔𝗗𝗢𝗥:JOSEPH
+𝗖𝗥𝗘𝗔𝗗𝗢𝗥:CLOUT
 
 ### MIS CONTACTOS
 <p>
