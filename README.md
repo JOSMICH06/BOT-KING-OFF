@@ -21,7 +21,7 @@ Instala archivos necesarios
 ```
 Clona este repositorio
  ```bash
-> git clone https://github.com/thechoute/Base
+> git clone https://github.com/theclout/Base
 ```
 Inicia la instalacion
 ```bash
