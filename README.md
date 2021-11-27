@@ -21,7 +21,7 @@ Instala archivos necesarios
 ```
 Clona este repositorio
  ```bash
-> git clone https://github.com/theclout/Base
+>git clone https://github.com/JOSMICH06/BOT-KING-OFF
 ```
 Inicia la instalacion
 ```bash
