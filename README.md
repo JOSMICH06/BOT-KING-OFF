@@ -6,7 +6,7 @@
 
 ### MIS CONTACTOS
 <p>
-<a href="http://wa.me/19567527252" target="blank"><img src="https://img.shields.io/badge/Whatsapp-30302f?style=flat&logo=whatsapp" /></a>
+<a href="http://wa.me/+994405828444" target="blank"><img src="https://img.shields.io/badge/Whatsapp-30302f?style=flat&logo=whatsapp" /></a>
 
  
 </p>
