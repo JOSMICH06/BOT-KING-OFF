@@ -25,7 +25,7 @@ Clona este repositorio
 ```
 Inicia la instalacion
 ```bash
-- cd Base
+- cd BOT-KING-OFF
 - bash install.sh
 ```
 PARA INICIAR EL BOT
